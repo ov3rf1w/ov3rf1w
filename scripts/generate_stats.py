@@ -167,6 +167,10 @@ def language_totals(user: dict) -> list[tuple[str, int, str]]:
     totals: defaultdict[str, int] = defaultdict(int)
     colors: dict[str, str] = {}
     for repo in user["repositories"]["nodes"]:
+        # The profile repository contains generated assets and automation code.
+        # Excluding it prevents the workflow from changing its own language mix.
+        if repo["name"].lower() == LOGIN.lower():
+            continue
         for edge in repo["languages"]["edges"]:
             name = edge["node"]["name"]
             totals[name] += int(edge["size"])
