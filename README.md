@@ -1,7 +1,9 @@
 <!-- profile-readyy -->
-<div align="center">
-  <img src="./assets/hero.svg" width="100%" alt="Raphael Wagner — Structiva, web systems and automation" />
-</div>
+
+<picture>
+  <source media="(max-width: 600px)" srcset="./assets/portrait-mobile.svg" />
+  <img src="./assets/portrait.svg" width="100%" alt="Detailed animated ASCII portrait of Raphael Wagner" />
+</picture>
 
 <p align="center">
   <a href="https://structiva.at/"><samp>STRUCTIVA ↗</samp></a>
@@ -10,11 +12,6 @@
   &nbsp;·&nbsp;
   <a href="https://www.linkedin.com/in/raphael-wagner-740a53385/"><samp>LINKEDIN ↗</samp></a>
 </p>
-
-<picture>
-  <source media="(max-width: 600px)" srcset="./assets/portrait-mobile.svg" />
-  <img src="./assets/portrait.svg" width="100%" alt="Animated ASCII portrait of Raphael Wagner" />
-</picture>
 
 > Ich entwickle Websites, Systeme und Automationen, die **maßgeschneidert statt zusammengebaut** wirken.<br />
 > Bei [Structiva](https://structiva.at/) verbinde ich Design, Entwicklung, SEO und technische Betreuung zu einem durchgängigen System.

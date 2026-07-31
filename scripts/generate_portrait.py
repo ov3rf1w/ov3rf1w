@@ -5,11 +5,12 @@ import html
 from pathlib import Path
 
 import numpy as np
+import cv2
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 from svg_theme import ACCENT, BG, FG, LINE, MUTED, font_css, shell, svg_document
 
-RAMP = "@%#*+=-:. "
+RAMP = "@%#sc*+=-:`. "
 
 
 def subject_on_white(image: Image.Image) -> Image.Image:
@@ -34,26 +35,31 @@ def subject_on_white(image: Image.Image) -> Image.Image:
 def ascii_rows(image: Image.Image, cols: int) -> list[str]:
     prepared = subject_on_white(image)
     gray = ImageOps.grayscale(prepared)
-    gray = gray.filter(ImageFilter.GaussianBlur(0.45))
-    gray = ImageOps.autocontrast(gray, cutoff=0.4)
-    gray = ImageEnhance.Contrast(gray).enhance(1.24)
+    gray = gray.filter(ImageFilter.GaussianBlur(0.25))
+    gray = ImageOps.autocontrast(gray, cutoff=0.25)
+    gray = ImageEnhance.Contrast(gray).enhance(1.12)
 
     width, height = gray.size
     rows = max(1, round(cols * (height / width) * 0.48))
-    sample = gray.resize((cols, rows), Image.Resampling.LANCZOS)
+    sample = np.asarray(gray.resize((cols, rows), Image.Resampling.LANCZOS), dtype=np.uint8)
+    clean_background = sample >= 245
+    filtered = cv2.bilateralFilter(sample, d=5, sigmaColor=24, sigmaSpace=24)
+    clahe = cv2.createCLAHE(clipLimit=2.4, tileGridSize=(8, 8))
+    enhanced = clahe.apply(filtered)
+    sample = cv2.addWeighted(sample, 0.58, enhanced, 0.42, 0)
+    sample[clean_background] = 255
     values = np.asarray(sample, dtype=np.float32) / 255.0
-    values = np.power(values, 1.48)
+    values = np.power(values, 1.42)
     indices = np.clip((values * (len(RAMP) - 1)).astype(int), 0, len(RAMP) - 1)
     return ["".join(RAMP[index] for index in row).rstrip() for row in indices]
 
 
 def render(rows: list[str], font_dir: Path) -> str:
     width, height = 1000, 620
-    font_size = 13.0
-    char_width = 7.8
-    line_height = 14.2
-    start_x, start_y = 38, 58
-    portrait_width = max((len(row) for row in rows), default=0) * char_width
+    font_size = 9.1
+    char_width = 5.52
+    line_height = 10.6
+    start_x, start_y = 28, 50
     css = font_css(font_dir, include_portrait=True)
 
     clips: list[str] = []
@@ -72,19 +78,19 @@ def render(rows: list[str], font_dir: Path) -> str:
             f'font-family="\'JetBrains Mono\'" font-size="{font_size}" xml:space="preserve">{html.escape(row)}</text>'
         )
         texts.append(
-            f'<rect x="{start_x}" y="{y - font_size + 1:.1f}" width="5" height="{font_size}" fill="{ACCENT}" opacity="0">'
+            f'<rect x="{start_x}" y="{y - font_size + 1:.1f}" width="3.5" height="{font_size}" fill="{ACCENT}" opacity="0">'
             f'<animate attributeName="x" from="{start_x}" to="{start_x + reveal_width:.1f}" dur=".42s" begin="{begin:.3f}s" fill="freeze"/>'
             f'<set attributeName="opacity" to="1" begin="{begin:.3f}s"/><set attributeName="opacity" to="0" begin="{begin + .42:.3f}s"/>'
             '</rect>'
         )
 
-    copy_x = min(650, start_x + portrait_width + 40)
+    copy_x = 658
     body = shell(width, height) + f'''
 <defs>{''.join(clips)}</defs>
-<path d="M620 34V586" stroke="{LINE}"/>
+<path d="M628 34V586" stroke="{LINE}"/>
 <text x="{copy_x}" y="74" fill="{ACCENT}" font-family="'Geist Mono'" font-size="11" letter-spacing="2">ONE PERSON / FULL SYSTEM</text>
-<text x="{copy_x}" y="133" fill="{FG}" font-family="'Archivo'" font-size="42">Technik, die</text>
-<text x="{copy_x}" y="178" fill="{FG}" font-family="'Archivo'" font-size="42">Charakter zeigt<tspan fill="{ACCENT}">.</tspan></text>
+<text x="{copy_x}" y="133" fill="{FG}" font-family="'Archivo'" font-size="36">Technik, die</text>
+<text x="{copy_x}" y="174" fill="{FG}" font-family="'Archivo'" font-size="36">Charakter zeigt<tspan fill="{ACCENT}">.</tspan></text>
 <text x="{copy_x}" y="225" fill="{MUTED}" font-family="'Manrope'" font-size="15">Keine anonyme Agentur.</text>
 <text x="{copy_x}" y="249" fill="{MUTED}" font-family="'Manrope'" font-size="15">Kein Baukasten-Look.</text>
 <text x="{copy_x}" y="273" fill="{MUTED}" font-family="'Manrope'" font-size="15">Ein direkter Weg von der Idee</text>
@@ -102,10 +108,10 @@ def render(rows: list[str], font_dir: Path) -> str:
 
 def render_mobile(rows: list[str], font_dir: Path) -> str:
     width, height = 600, 760
-    font_size = 13.0
-    char_width = 7.55
-    line_height = 14.2
-    start_x, start_y = 28, 58
+    font_size = 10.2
+    char_width = 6.14
+    line_height = 11.6
+    start_x, start_y = 28, 54
     css = font_css(font_dir, include_portrait=True)
     clips: list[str] = []
     texts: list[str] = []
@@ -123,7 +129,7 @@ def render_mobile(rows: list[str], font_dir: Path) -> str:
             f'font-family="\'JetBrains Mono\'" font-size="{font_size}" xml:space="preserve">{html.escape(row)}</text>'
         )
         texts.append(
-            f'<rect x="{start_x}" y="{y - font_size + 1:.1f}" width="5" height="{font_size}" fill="{ACCENT}" opacity="0">'
+            f'<rect x="{start_x}" y="{y - font_size + 1:.1f}" width="4" height="{font_size}" fill="{ACCENT}" opacity="0">'
             f'<animate attributeName="x" from="{start_x}" to="{start_x + reveal_width:.1f}" dur=".42s" begin="{begin:.3f}s" fill="freeze"/>'
             f'<set attributeName="opacity" to="1" begin="{begin:.3f}s"/><set attributeName="opacity" to="0" begin="{begin + .42:.3f}s"/>'
             '</rect>'
@@ -147,17 +153,18 @@ def main() -> None:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", default=Path("assets/portrait.svg"), type=Path)
     parser.add_argument("--mobile-output", default=Path("assets/portrait-mobile.svg"), type=Path)
-    parser.add_argument("--cols", default=72, type=int)
+    parser.add_argument("--cols", default=104, type=int)
     args = parser.parse_args()
 
     image = Image.open(args.input).convert("RGB")
     rows = ascii_rows(image, args.cols)
+    mobile_rows = ascii_rows(image, min(args.cols, 88))
     output = args.output if args.output.is_absolute() else Path.cwd() / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
     font_dir = Path(__file__).resolve().parents[1] / "assets" / "fonts"
     output.write_text(render(rows, font_dir), encoding="utf-8")
     mobile_output = args.mobile_output if args.mobile_output.is_absolute() else Path.cwd() / args.mobile_output
-    mobile_output.write_text(render_mobile(rows, font_dir), encoding="utf-8")
+    mobile_output.write_text(render_mobile(mobile_rows, font_dir), encoding="utf-8")
     print(f"wrote {output} ({len(rows)} rows × {args.cols} columns)")
     print(f"wrote {mobile_output}")
 
