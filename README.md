@@ -1,4 +1,4 @@
-<!-- profile-ready -->
+<!-- profile-readyy -->
 <div align="center">
   <img src="./assets/hero.svg" width="100%" alt="Raphael Wagner — Structiva, web systems and automation" />
 </div>
