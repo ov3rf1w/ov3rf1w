@@ -9,10 +9,10 @@
 <text x="24" y="31" fill="#ff5b04" font-family="'Geist Mono'" font-size="10" letter-spacing="1.6">01 / SIGNAL</text>
 <text x="24" y="58" fill="#f4f1ea" font-family="'Archivo'" font-size="22">CONTRIBUTIONS</text>
 
-<text x="466" y="54" text-anchor="end" fill="#ff5b04" font-family="'Archivo'" font-size="34">2544</text>
+<text x="466" y="54" text-anchor="end" fill="#ff5b04" font-family="'Archivo'" font-size="34">2565</text>
 <text x="25" y="91" fill="#f4f1ea" font-family="'Manrope'" font-size="17">278</text><text x="68" y="91" fill="#a39b8c" font-family="'Geist Mono'" font-size="9" letter-spacing="1">COMMITS</text><text x="250" y="91" fill="#f4f1ea" font-family="'Manrope'" font-size="17">2</text><text x="293" y="91" fill="#a39b8c" font-family="'Geist Mono'" font-size="9" letter-spacing="1">PULL REQUESTS</text><text x="25" y="136" fill="#f4f1ea" font-family="'Manrope'" font-size="17">0</text><text x="68" y="136" fill="#a39b8c" font-family="'Geist Mono'" font-size="9" letter-spacing="1">REVIEWS</text><text x="250" y="136" fill="#f4f1ea" font-family="'Manrope'" font-size="17">0</text><text x="293" y="136" fill="#a39b8c" font-family="'Geist Mono'" font-size="9" letter-spacing="1">ISSUES</text>
 <path d="M26 187H464" stroke="#2a2722"/>
-<path d="M26.0,178.9 L65.8,182.8 L105.6,182.6 L145.5,180.7 L185.3,176.8 L225.1,172.2 L264.9,182.2 L304.7,167.8 L344.5,179.2 L384.4,163.2 L424.2,154.3 L464.0,132.0" fill="none" stroke="#ff5b04" stroke-width="2"/>
-<path d="M26.0,178.9 L65.8,182.8 L105.6,182.6 L145.5,180.7 L185.3,176.8 L225.1,172.2 L264.9,182.2 L304.7,167.8 L344.5,179.2 L384.4,163.2 L424.2,154.3 L464.0,132.0 L464 187 L26 187 Z" fill="#ff5b04" fill-opacity=".08"/>
+<path d="M26.0,179.0 L65.8,182.9 L105.6,182.3 L145.5,180.6 L185.3,174.5 L225.1,175.4 L264.9,182.3 L304.7,168.2 L344.5,177.1 L384.4,165.9 L424.2,155.1 L464.0,132.0" fill="none" stroke="#ff5b04" stroke-width="2"/>
+<path d="M26.0,179.0 L65.8,182.9 L105.6,182.3 L145.5,180.6 L185.3,174.5 L225.1,175.4 L264.9,182.3 L304.7,168.2 L344.5,177.1 L384.4,165.9 L424.2,155.1 L464.0,132.0 L464 187 L26 187 Z" fill="#ff5b04" fill-opacity=".08"/>
 
 </svg>
