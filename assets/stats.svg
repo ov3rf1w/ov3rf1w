@@ -12,7 +12,7 @@
 <text x="466" y="54" text-anchor="end" fill="#ff5b04" font-family="'Archivo'" font-size="34">3881</text>
 <text x="25" y="91" fill="#f4f1ea" font-family="'Manrope'" font-size="17">280</text><text x="68" y="91" fill="#a39b8c" font-family="'Geist Mono'" font-size="9" letter-spacing="1">COMMITS</text><text x="250" y="91" fill="#f4f1ea" font-family="'Manrope'" font-size="17">4</text><text x="293" y="91" fill="#a39b8c" font-family="'Geist Mono'" font-size="9" letter-spacing="1">PULL REQUESTS</text><text x="25" y="136" fill="#f4f1ea" font-family="'Manrope'" font-size="17">0</text><text x="68" y="136" fill="#a39b8c" font-family="'Geist Mono'" font-size="9" letter-spacing="1">REVIEWS</text><text x="250" y="136" fill="#f4f1ea" font-family="'Manrope'" font-size="17">0</text><text x="293" y="136" fill="#a39b8c" font-family="'Geist Mono'" font-size="9" letter-spacing="1">ISSUES</text>
 <path d="M26 187H464" stroke="#2a2722"/>
-<path d="M26.0,179.0 L65.8,178.1 L105.6,181.0 L145.5,175.5 L185.3,182.0 L225.1,167.9 L264.9,182.8 L304.7,132.0 L344.5,164.5 L384.4,169.4 L424.2,171.9 L464.0,177.9" fill="none" stroke="#ff5b04" stroke-width="2"/>
-<path d="M26.0,179.0 L65.8,178.1 L105.6,181.0 L145.5,175.5 L185.3,182.0 L225.1,167.9 L264.9,182.8 L304.7,132.0 L344.5,164.5 L384.4,169.4 L424.2,171.9 L464.0,177.9 L464 187 L26 187 Z" fill="#ff5b04" fill-opacity=".08"/>
+<path d="M26.0,179.0 L65.8,178.2 L105.6,180.9 L145.5,174.7 L185.3,182.9 L225.1,167.9 L264.9,182.8 L304.7,132.0 L344.5,162.2 L384.4,171.7 L424.2,171.1 L464.0,178.7" fill="none" stroke="#ff5b04" stroke-width="2"/>
+<path d="M26.0,179.0 L65.8,178.2 L105.6,180.9 L145.5,174.7 L185.3,182.9 L225.1,167.9 L264.9,182.8 L304.7,132.0 L344.5,162.2 L384.4,171.7 L424.2,171.1 L464.0,178.7 L464 187 L26 187 Z" fill="#ff5b04" fill-opacity=".08"/>
 
 </svg>
