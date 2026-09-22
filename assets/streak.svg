@@ -10,9 +10,9 @@
 <text x="24" y="58" fill="#f4f1ea" font-family="'Archivo'" font-size="22">STREAKS</text>
 
 <path d="M245 78V190" stroke="#2a2722"/>
-<text x="24" y="117" fill="#ff5b04" font-family="'Archivo'" font-size="48">1</text>
+<text x="24" y="117" fill="#ff5b04" font-family="'Archivo'" font-size="48">0</text>
 <text x="24" y="142" fill="#f4f1ea" font-family="'Geist Mono'" font-size="10" letter-spacing="1.5">CURRENT DAYS</text>
-<text x="24" y="169" fill="#a39b8c" font-family="'Geist Mono'" font-size="9">20 SEP — 20 SEP</text>
+<text x="24" y="169" fill="#a39b8c" font-family="'Geist Mono'" font-size="9">—</text>
 <text x="270" y="117" fill="#f4f1ea" font-family="'Archivo'" font-size="48">14</text>
 <text x="270" y="142" fill="#f4f1ea" font-family="'Geist Mono'" font-size="10" letter-spacing="1.5">LONGEST DAYS</text>
 <text x="270" y="169" fill="#a39b8c" font-family="'Geist Mono'" font-size="9">02 JUN — 15 JUN 2026</text>
